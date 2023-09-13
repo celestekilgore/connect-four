@@ -33,13 +33,13 @@ function makeBoard() {
 function makeHtmlBoard() {
   const htmlBoard = document.getElementById('board');
 
-  // TODO: add comment for this code
+  // create table row element and set id attribute
   const top = document.createElement("tr");
   top.setAttribute("id", "column-top");
 
-  // TODO: add comment for this code
+  // loop thru top row, add click eventListener
   for (let col = 0; col < WIDTH; col++) {
-    var headCell = document.createElement("td");
+    const headCell = document.createElement("td");
     headCell.setAttribute("id", `top-${col}`);
     headCell.addEventListener("click", handleClick);
     top.append(headCell);
@@ -49,19 +49,22 @@ function makeHtmlBoard() {
   // dynamically creates the main part of html board
   // uses HEIGHT to create table rows
   // uses WIDTH to create table cells for each row
-  for (let row = 0; row < HEIGHT; row++) {
-    // TODO: Create a table row element and assign to a "row" variable
+  for (let y = 0; y < HEIGHT; y++) {
+    // Create a table row element and assign to a "row" variable
+    const row = document.createElement('tr');
 
-    for (let col = 0; col < WIDTH; col++) {
-      // TODO: Create a table cell element and assign to a "cell" variable
-
-      // TODO: add an id, c-y-x, to the above table cell element
+    for (let x = 0; x < WIDTH; x++) {
+      // Create a table cell element and assign to a "cell" variable
+      const cell = document.createElement('td');
+      // add an id, c-y-x, to the above table cell element
       // you'll use this later, so make sure you use c-y-x
+      cell.setAttribute('id', 'c-y-x');
 
-      // TODO: append the table cell to the table row
-
+      // append the table cell to the table row
+      row.append(cell);
     }
-    // TODO: append the row to the html board
+    // append the row to the html board
+    htmlBoard.append(row);
 
   }
 }
