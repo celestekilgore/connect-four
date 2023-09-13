@@ -20,11 +20,11 @@ const board = []; // array of rows, each row is array of cells  (board[y][x])
 function makeBoard() {
   // TODO: set "board" to empty HEIGHT x WIDTH matrix array
   for (let y = 0; y < HEIGHT; y++) {
-    const subArr = [];
+    const row = [];
     for (let x = 0; x < WIDTH; x++) {
       subArr.push(null);
     }
-    board.push(subArr);
+    board.push(row);
   }
 }
 
@@ -38,9 +38,9 @@ function makeHtmlBoard() {
   top.setAttribute("id", "column-top");
 
   // loop thru top row, add click eventListener
-  for (let col = 0; col < WIDTH; col++) {
+  for (let x = 0; x < WIDTH; x++) {
     const headCell = document.createElement("td");
-    headCell.setAttribute("id", `top-${col}`);
+    headCell.setAttribute("id", `top-${x}`);
     headCell.addEventListener("click", handleClick);
     top.append(headCell);
   }
@@ -58,7 +58,7 @@ function makeHtmlBoard() {
       const cell = document.createElement('td');
       // add an id, c-y-x, to the above table cell element
       // you'll use this later, so make sure you use c-y-x
-      cell.setAttribute('id', 'c-y-x');
+      cell.setAttribute('id', `c-${y}-${x}`);
 
       // append the table cell to the table row
       row.append(cell);
